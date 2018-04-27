@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Apr 12, 2018 11:27:15 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="pojo.Thoikhoabieu" table="thoikhoabieu" catalog="diemdanh" optimistic-lock="version">
+        <composite-id name="id" class="pojo.ThoikhoabieuId">
+            <key-property name="maMh" type="string">
+                <column name="MaMH" length="10" />
+            </key-property>
+            <key-property name="tenMh" type="string">
+                <column name="TenMH" length="45" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="monhoc" class="pojo.Monhoc" update="false" insert="false" fetch="select">
+            <column name="MaMH" length="10" not-null="true" />
+        </many-to-one>
+        <property name="ngayBatDau" type="date">
+            <column name="NgayBatDau" length="10" />
+        </property>
+        <property name="ngayKetThuc" type="date">
+            <column name="NgayKetThuc" length="10" />
+        </property>
+        <property name="thuTrongTuan" type="string">
+            <column name="ThuTrongTuan" length="10" />
+        </property>
+        <property name="gioBatDau" type="string">
+            <column name="GioBatDau" length="10" />
+        </property>
+        <property name="gioKetThuc" type="string">
+            <column name="GioKetThuc" length="10" />
+        </property>
+        <property name="tenPhongHoc" type="string">
+            <column name="TenPhongHoc" length="10" />
+        </property>
+    </class>
+</hibernate-mapping>

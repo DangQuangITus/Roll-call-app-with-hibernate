@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Apr 12, 2018 11:27:15 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="pojo.Giaovu" table="giaovu" catalog="diemdanh" optimistic-lock="version">
+        <id name="maGv" type="string">
+            <column name="MaGV" length="10" />
+            <generator class="assigned" />
+        </id>
+        <property name="tenGv" type="string">
+            <column name="TenGV" length="45" />
+        </property>
+        <property name="password" type="string">
+            <column name="Password" length="45" />
+        </property>
+        <property name="tenDangNhap" type="string">
+            <column name="TenDangNhap" length="45" />
+        </property>
+        <set name="monhocs" table="monhoc" inverse="true" lazy="false" fetch="select">
+            <key>
+                <column name="MaGV" length="10" />
+            </key>
+            <one-to-many class="pojo.Monhoc" />
+        </set>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Apr 12, 2018 11:27:15 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="pojo.Monhoc" table="monhoc" catalog="diemdanh" optimistic-lock="version">
+        <id name="maMh" type="string">
+            <column name="MaMH" length="10" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="giaovu" class="pojo.Giaovu" fetch="select" lazy="false" cascade="save-update">
+            <column name="MaGV" length="10" />
+        </many-to-one>
+        <property name="tenMh" type="string">
+            <column name="TenMH" length="45" />
+        </property>
+        <set name="bangdiemdanhs" table="bangdiemdanh" inverse="true" lazy="false" fetch="select">
+            <key>
+                <column name="MaMH" length="10" not-null="true" />
+            </key>
+            <one-to-many class="pojo.Bangdiemdanh" />
+        </set>
+        <set name="thoikhoabieus" table="thoikhoabieu" inverse="true" lazy="false" fetch="select">
+            <key>
+                <column name="MaMH" length="10" not-null="true" />
+            </key>
+            <one-to-many class="pojo.Thoikhoabieu" />
+        </set>
+    </class>
+</hibernate-mapping>
